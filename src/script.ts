@@ -1,12 +1,17 @@
-import express from 'express';
-const world = 'world';
+import { JokeResponse } from "./models";
 
-export function hello(who: string = world): string {
-  return `Hello ${who}!`;
+
+async function getJoke(): Promise<JokeResponse> {
+  const response = await fetch("https://icanhazdadjoke.com/", {
+    headers: {
+      Accept: "application/json"
+    }
+  });
+
+  return response.json();
 }
 
-console.log(hello());
+getJoke().then(joke => {
+  console.log(joke.joke);
+});
 
-const app = express();
-app.get('/', (req, res) => res.send('Hello from Express + TypeScript!'));
-app.listen(3000, () => console.log('Server running on http://localhost:3000'));

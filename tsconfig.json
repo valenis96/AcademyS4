@@ -4,6 +4,8 @@
     "module": "ES6",
     "target": "ES6",
     "types": [],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "./src",
+    "outDir": "./build",
   }
 }
