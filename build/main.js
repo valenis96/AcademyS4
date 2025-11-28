@@ -7,13 +7,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-export function getJoke() {
+import { getJoke } from './script.js';
+export function printJoke() {
     return __awaiter(this, void 0, void 0, function* () {
-        const res = yield (yield fetch('https://icanhazdadjoke.com/', {
-            headers: {
-                Accept: 'application/json',
-            },
-        })).json();
-        return res.joke;
+        const joke = yield getJoke();
+        const container = document.getElementById('joke');
+        container.textContent = joke;
     });
 }
+void printJoke();

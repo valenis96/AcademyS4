@@ -1,17 +1,11 @@
-import { JokeResponse } from "./models";
+import {JokeResponse} from './models';
 
-
-async function getJoke(): Promise<JokeResponse> {
-  const response = await fetch("https://icanhazdadjoke.com/", {
+export async function getJoke(): Promise<string> {
+  const res: JokeResponse = await (await fetch('https://icanhazdadjoke.com/', {
     headers: {
-      Accept: "application/json"
-    }
-  });
+      Accept: 'application/json',
+    },
+  })).json();
 
-  return response.json();
+  return res.joke;
 }
-
-getJoke().then(joke => {
-  console.log(joke.joke);
-});
-
