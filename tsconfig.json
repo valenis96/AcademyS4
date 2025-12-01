@@ -1,11 +1,15 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    "module": "ES6",
-    "target": "ES6",
-    "types": [],
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "rootDir": "./src",
-    "outDir": "./build",
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
   }
 }

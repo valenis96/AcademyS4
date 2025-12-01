@@ -14,13 +14,11 @@ export async function printJoke() {
 export const vote = (vote) => {
     console.log(addVote(vote));
 };
-
 const logMeteo = async () => {
     getMeteo(params).then(data => {
         const weatherCode = data.hourly.weather_code[new Date().getHours()];
         console.log(getWeatherInfo(weatherCode));
     });
 };
-
 void printJoke();
 void logMeteo();

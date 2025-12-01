@@ -10,3 +10,16 @@ export interface Joke {
   score: number | undefined;
   date: string;
 }
+
+export interface WeatherParams {
+  latitude: number,
+  longitude: number,
+  hourly: string,
+  timezone: string,
+  forecast_days: number,
+};
+
+export interface WeatherCodeInfo {
+  day: { description: string; image: string };
+  night: { description: string; image: string };
+}
