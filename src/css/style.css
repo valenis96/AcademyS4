@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Barrio&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Barrio&family=Unkempt:wght@400;700&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-barrio: "Barrio", sans-serif; 
+  --font-unkempt: "Unkempt", sans-serif; 
+  --color-pink: #FF99FF;
+  --color-dark-pink: #FF3399; 
+  --color-peach: #FFCC99; 
+  --color-blue: #003366;
+  --text-shadow-xl :  -3px -3px 0  #003366,
+                       3px -3px 0  #003366,
+                      -3px  3px 0  #003366,
+                       3px  3px 0  #003366;
+}
+
+.vote-button {
+  @apply font-barrio text-2xl cursor-pointer bg-dark-pink px-[1rem] py-[0.3rem] rounded-full hover:text-white;
+}
+
+.zoom-animation {
+  @apply cursor-pointer transition duration-300 ease-in-out hover:scale-130;
+}

@@ -1,8 +1,11 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    "module": "nodenext",
-    "target": "esnext",
+    "module": "ES6",
+    "target": "ES6",
     "types": [],
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "./src",
+    "outDir": "./build",
   }
 }
