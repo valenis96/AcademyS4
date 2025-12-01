@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { getJoke } from './script.js';
+// import '../src/css/style.css';
 export function printJoke() {
     return __awaiter(this, void 0, void 0, function* () {
         const joke = yield getJoke();

@@ -3,7 +3,8 @@
     "@types/node": "^22.19.1",
     "gts": "^6.0.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite": "^7.2.6"
   },
   "scripts": {
     "lint": "gts lint",
@@ -13,10 +14,14 @@
     "prepare": "npm.cmd run compile",
     "pretest": "npm.cmd run compile",
     "posttest": "npm.cmd run lint",
-    "dev": "ts-node src/script.ts"
+    "dev": "vite",
+    "build": "vite build",
+    "script": "ts-node src/script.ts"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.17",
     "@types/express": "^5.0.5",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "tailwindcss": "^4.1.17"
   }
 }

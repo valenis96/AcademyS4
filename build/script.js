@@ -14,6 +14,7 @@ export function getJoke() {
                 Accept: 'application/json',
             },
         })).json();
+        console.log(res.joke);
         return res.joke;
     });
 }
