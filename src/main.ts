@@ -1,4 +1,4 @@
-import {getJoke} from './script.js';
+import {getJoke, addVote} from './script.js';
 // import '../src/css/style.css';
 
 export async function printJoke(): Promise<void> {
@@ -6,5 +6,9 @@ export async function printJoke(): Promise<void> {
   const container = document.getElementById('joke');
   container!.textContent = joke;
 }
+
+export const vote = (vote: number) => {
+  console.log(addVote(vote));
+};
 
 void printJoke();

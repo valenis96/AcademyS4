@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+const reportAcudits = [];
 export function getJoke() {
     return __awaiter(this, void 0, void 0, function* () {
         const res = yield (yield fetch('https://icanhazdadjoke.com/', {
@@ -14,7 +15,12 @@ export function getJoke() {
                 Accept: 'application/json',
             },
         })).json();
-        console.log(res.joke);
+        reportAcudits.push({ joke: res.joke, score: undefined, date: new Date().toISOString() });
+        console.log(reportAcudits);
         return res.joke;
     });
 }
+export const addVote = (score) => {
+    reportAcudits[reportAcudits.length - 1] = Object.assign(Object.assign({}, reportAcudits[reportAcudits.length - 1]), { score });
+    return reportAcudits;
+};

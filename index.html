@@ -9,10 +9,18 @@
 <body class='bg-[url("/src/img/flying-cat.gif")] bg-repeat bg-[length:120px]'>
   <div>
     <h1 class="text-8xl mt-[2rem] mb-[3rem] font-barrio text-white w-fit m-auto text-shadow-xl">Dad's joke</h1>
+    <div class="max-w-lg m-auto border-4 border-peach rounded-md outline-3 outline-black p-[2rem] px-[4rem] flex flex-col items-center gap-[1rem] bg-pink shadow-md">
+      <button class="font-barrio text-3xl w-fit zoom-animation" id="loadJoke" onclick="printJoke()">Load a joke</button>
+      <p class="font-unkempt text-center text-xl" id="joke"></p>
 
-    <div class="max-w-lg m-auto border-4 border-peach rounded-md outline-3 outline-black p-[2rem] px-[4rem] flex flex-col items-center gap-[2rem] bg-pink shadow-md">
-      <button class="font-barrio text-2xl w-fit cursor-pointer transition duration-500 ease-in-out hover:scale-150" id="loadJoke" onclick="printJoke()">Load a joke</button>
-      <p class="font-unkempt text-center" id="joke"></p>
+      <div class="mt-[2rem]">
+        <h3 class="font-barrio mb-[1rem]">How much do you like the joke?</h3>
+        <div class="flex justify-center gap-[3rem]">
+          <button class="vote-button zoom-animation" onclick="vote(1)">1</button>
+          <button class="vote-button zoom-animation" onclick="vote(2)">2</button>
+          <button class="vote-button zoom-animation" onclick="vote(3)">3</button>
+        </div>
+      </div>
     </div>
   </div>
 

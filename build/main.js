@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { getJoke } from './script.js';
+import { getJoke, addVote } from './script.js';
 // import '../src/css/style.css';
 export function printJoke() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -16,4 +16,7 @@ export function printJoke() {
         container.textContent = joke;
     });
 }
+export const vote = (vote) => {
+    console.log(addVote(vote));
+};
 void printJoke();
