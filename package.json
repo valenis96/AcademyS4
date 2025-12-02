@@ -16,13 +16,16 @@
     "posttest": "npm.cmd run lint",
     "dev": "vite",
     "build": "vite build",
-    "script": "ts-node src/script.ts"
+    "script": "ts-node src/script.ts",
+    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
     "@types/express": "^5.0.5",
     "express": "^5.1.0",
+    "jest": "^30.2.0",
     "openmeteo": "^1.2.3",
     "tailwindcss": "^4.1.17"
-  }
+  },
+  "type": "module"
 }

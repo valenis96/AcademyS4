@@ -1,8 +1,8 @@
 import { Joke, JokeResponse, WeatherCodeInfo, WeatherDescription, WeatherParams } from './models';
 import descriptions from "./weather/descriptions.json";
 
-const reportAcudits: Joke[] = [];
-let countJokes = 0;
+export const reportAcudits: Joke[] = [];
+export let countJokes = 0;
 
 export async function getJoke(): Promise<string> {
   const url = countJokes % 2 === 0 ? 'https://icanhazdadjoke.com/' : 'https://api.chucknorris.io/jokes/random';
@@ -12,7 +12,10 @@ export async function getJoke(): Promise<string> {
         Accept: 'application/json',
       },
     })
-  ).json();
+  )?.json();
+
+  console.log(res);
+
 
   const joke = res.joke || res.value || '';
 
@@ -23,12 +26,12 @@ export async function getJoke(): Promise<string> {
   return joke;
 }
 
-export const addVote = (score: number) => {
+export const addVote = (score: number): Joke[] => {
   reportAcudits[reportAcudits.length - 1] = { ...reportAcudits[reportAcudits.length - 1], score }
   return reportAcudits
 }
 
-export async function getMeteo(params: WeatherParams) {
+export async function getMeteo(params: WeatherParams): Promise<any> {
   const url = new URL("https://api.open-meteo.com/v1/forecast");
 
   Object.entries(params).forEach(([key, value]) => {
