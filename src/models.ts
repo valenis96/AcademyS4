@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
 export interface JokeResponse {
   id: string;
-  joke: string;
-  status: number;
+  joke?: string;
+  status?: number;
+  value?: string;
 }
 
 export interface Joke {

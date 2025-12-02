@@ -2,20 +2,25 @@ import { Joke, JokeResponse, WeatherCodeInfo, WeatherDescription, WeatherParams 
 import descriptions from "./weather/descriptions.json";
 
 const reportAcudits: Joke[] = [];
+let countJokes = 0;
 
 export async function getJoke(): Promise<string> {
+  const url = countJokes % 2 === 0 ? 'https://icanhazdadjoke.com/' : 'https://api.chucknorris.io/jokes/random';
   const res: JokeResponse = await (
-    await fetch('https://icanhazdadjoke.com/', {
+    await fetch(url, {
       headers: {
         Accept: 'application/json',
       },
     })
   ).json();
 
-  reportAcudits.push({ joke: res.joke, score: undefined, date: new Date().toISOString() })
-  console.log(reportAcudits);
+  const joke = res.joke || res.value || '';
 
-  return res.joke;
+  reportAcudits.push({ joke, score: undefined, date: new Date().toISOString() })
+  console.log(reportAcudits);
+  countJokes++;
+
+  return joke;
 }
 
 export const addVote = (score: number) => {
