@@ -1,18 +1,14 @@
 import descriptions from "./weather/descriptions.json";
 const reportAcudits = [];
-let countJokes = 0;
 export async function getJoke() {
-    const url = countJokes % 2 === 0 ? 'https://icanhazdadjoke.com/' : 'https://api.chucknorris.io/jokes/random';
-    const res = await (await fetch(url, {
+    const res = await (await fetch('https://icanhazdadjoke.com/', {
         headers: {
             Accept: 'application/json',
         },
     })).json();
-    const joke = res.joke || res.value || '';
-    reportAcudits.push({ joke, score: undefined, date: new Date().toISOString() });
+    reportAcudits.push({ joke: res.joke, score: undefined, date: new Date().toISOString() });
     console.log(reportAcudits);
-    countJokes++;
-    return joke;
+    return res.joke;
 }
 export const addVote = (score) => {
     reportAcudits[reportAcudits.length - 1] = { ...reportAcudits[reportAcudits.length - 1], score };

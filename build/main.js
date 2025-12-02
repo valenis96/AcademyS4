@@ -1,22 +1,35 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
+import { getJoke, addVote, getMeteo, getWeatherInfo } from './script.js';
+const params = {
+    latitude: 41.3888,
+    longitude: 2.159,
+    hourly: "weather_code",
+    timezone: "Europe/Berlin",
+    forecast_days: 1,
 };
-import { getJoke, addVote } from './script.js';
-// import '../src/css/style.css';
-export function printJoke() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const joke = yield getJoke();
-        const container = document.getElementById('joke');
-        container.textContent = joke;
-    });
+export async function printJoke() {
+    const joke = await getJoke();
+    const container = document.getElementById('joke');
+    container.textContent = joke;
 }
 export const vote = (vote) => {
     console.log(addVote(vote));
 };
+const logMeteo = async () => {
+    getMeteo(params).then(data => {
+        const weatherCode = data.hourly.weather_code[new Date().getHours()];
+        const meteo = getWeatherInfo(weatherCode);
+        const containersDesc = document.getElementsByClassName('meteo-description');
+        const containersImg = document.getElementsByClassName('meteo-image');
+        for (const container of containersDesc)
+            container.textContent = meteo?.description || null;
+        for (const container of containersImg) {
+            if (container instanceof HTMLImageElement) {
+                container.src = meteo?.image || 'no image available';
+                container.alt = meteo?.description || 'meteo';
+            }
+        }
+        ;
+    });
+};
 void printJoke();
+void logMeteo();
