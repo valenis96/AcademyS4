@@ -1,4 +1,4 @@
-import { Joke, JokeResponse, WeatherCodeInfo, WeatherParams } from './models';
+import { Joke, JokeResponse, WeatherCodeInfo, WeatherDescription, WeatherParams } from './models';
 import descriptions from "./weather/descriptions.json";
 
 const reportAcudits: Joke[] = [];
@@ -39,7 +39,7 @@ export async function getMeteo(params: WeatherParams) {
   return await response.json();
 }
 
-export function getWeatherInfo(code: number, isNight: boolean = false): WeatherCodeInfo["day"] | null {
+export function getWeatherInfo(code: number, isNight: boolean = false): WeatherDescription | null {
   const info: WeatherCodeInfo | undefined = (descriptions as any)[code];
   if (!info) return null;
   return isNight ? info.night : info.day;

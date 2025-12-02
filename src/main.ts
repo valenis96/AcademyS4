@@ -1,3 +1,4 @@
+import { WeatherDescription } from './models.js';
 import { getJoke, addVote, getMeteo, getWeatherInfo } from './script.js';
 
 const params = {
@@ -21,7 +22,16 @@ export const vote = (vote: number) => {
 const logMeteo = async () => {
   getMeteo(params).then(data => {
     const weatherCode = data.hourly.weather_code[new Date().getHours()]
-    console.log(getWeatherInfo(weatherCode));
+    const meteo: WeatherDescription | null = getWeatherInfo(weatherCode)
+    const containersDesc = document.getElementsByClassName('meteo-description');
+    const containersImg = document.getElementsByClassName('meteo-image');
+    for (const container of containersDesc) container.textContent = meteo?.description || null;
+    for (const container of containersImg) {
+      if (container instanceof HTMLImageElement) {
+        container.src = meteo?.image || 'no image available'
+        container.alt = meteo?.description || 'meteo'
+      }
+    };
   });
 };
 

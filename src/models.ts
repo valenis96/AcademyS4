@@ -20,6 +20,11 @@ export interface WeatherParams {
 };
 
 export interface WeatherCodeInfo {
-  day: { description: string; image: string };
-  night: { description: string; image: string };
+  day: WeatherDescription;
+  night: WeatherDescription;
+}
+
+export interface WeatherDescription {
+  description: string | null;
+  image: string | null;
 }

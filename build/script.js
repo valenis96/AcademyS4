@@ -11,7 +11,7 @@ export async function getJoke() {
     return res.joke;
 }
 export const addVote = (score) => {
-    reportAcudits[reportAcudits.length - 1] = Object.assign(Object.assign({}, reportAcudits[reportAcudits.length - 1]), { score });
+    reportAcudits[reportAcudits.length - 1] = { ...reportAcudits[reportAcudits.length - 1], score };
     return reportAcudits;
 };
 export async function getMeteo(params) {

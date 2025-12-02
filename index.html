@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./src/css/style.css" rel="stylesheet">
   <title>Dad's joke</title>
 </head>
+
 <body class='bg-[url("/src/img/flying-cat.gif")] bg-repeat bg-[length:120px]'>
   <div>
-    <h1 class="text-8xl mt-[2rem] mb-[3rem] font-barrio text-white w-fit m-auto text-shadow-xl">Dad's joke</h1>
-    <div class="max-w-lg m-auto border-4 border-peach rounded-md outline-3 outline-black p-[2rem] px-[4rem] flex flex-col items-center gap-[1rem] bg-pink shadow-md">
+    <div class="flex justify-center items-baseline gap-[1rem] m-auto pt-[2rem] mb-[3rem]">
+      <span>
+        <img class="meteo-image" src="http://openweathermap.org/img/wn/03d@2x.png" alt="Meteo">
+        <p class="meteo-description"></p>
+      </span>
+      <h1 class="text-8xl font-barrio text-white text-shadow-xl text-center">Dad's joke</h1>
+      <span>
+        <img class=" meteo-image" src="http://openweathermap.org/img/wn/03d@2x.png" alt="Meteo">
+        <p class="meteo-description"></p>
+      </span>
+    </div>
+
+    <div
+      class="max-w-lg m-auto border-4 border-peach rounded-md outline-3 outline-black p-[2rem] px-[4rem] flex flex-col items-center gap-[1rem] bg-pink shadow-md">
       <button class="font-barrio text-3xl w-fit zoom-animation" id="loadJoke" onclick="printJoke()">Load a joke</button>
       <p class="font-unkempt text-center text-xl" id="joke"></p>
 
@@ -29,4 +43,5 @@
     Object.assign(window, main);
   </script>
 </body>
+
 </html>
