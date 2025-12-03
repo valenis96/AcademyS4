@@ -14,12 +14,17 @@ export async function getJoke(): Promise<string> {
     })
   )?.json();
 
-  console.log(res);
-
+  if (res.status !== 200) {
+    return "Nothing to laught... Houston, we've had a problem here";
+  }
 
   const joke = res.joke || res.value || '';
 
-  reportAcudits.push({ joke, score: undefined, date: new Date().toISOString() })
+  reportAcudits.push({
+    joke,
+    score: undefined,
+    date: new Date().toISOString()
+  });
   console.log(reportAcudits);
   countJokes++;
 
@@ -51,4 +56,9 @@ export function getWeatherInfo(code: number, isNight: boolean = false): WeatherD
   const info: WeatherCodeInfo | undefined = (descriptions as any)[code];
   if (!info) return null;
   return isNight ? info.night : info.day;
+}
+
+export function _resetForTests() {
+  countJokes = 0;
+  reportAcudits.length = 0;
 }

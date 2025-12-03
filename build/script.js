@@ -8,9 +8,15 @@ export async function getJoke() {
             Accept: 'application/json',
         },
     }))?.json();
-    console.log(res);
+    if (res.status !== 200) {
+        return "Nothing to laught... Houston, we've had a problem here";
+    }
     const joke = res.joke || res.value || '';
-    reportAcudits.push({ joke, score: undefined, date: new Date().toISOString() });
+    reportAcudits.push({
+        joke,
+        score: undefined,
+        date: new Date().toISOString()
+    });
     console.log(reportAcudits);
     countJokes++;
     return joke;
@@ -35,4 +41,8 @@ export function getWeatherInfo(code, isNight = false) {
     if (!info)
         return null;
     return isNight ? info.night : info.day;
+}
+export function _resetForTests() {
+    countJokes = 0;
+    reportAcudits.length = 0;
 }
