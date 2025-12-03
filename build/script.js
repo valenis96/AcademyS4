@@ -8,7 +8,7 @@ export async function getJoke() {
             Accept: 'application/json',
         },
     }))?.json();
-    if (res.status !== 200) {
+    if (countJokes % 2 === 0 && res.status !== 200) {
         return "Nothing to laught... Houston, we've had a problem here";
     }
     const joke = res.joke || res.value || '';
