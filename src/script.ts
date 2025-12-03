@@ -14,7 +14,7 @@ export async function getJoke(): Promise<string> {
     })
   )?.json();
 
-  if (res.status !== 200) {
+  if (countJokes % 2 === 0 && res.status !== 200) {
     return "Nothing to laught... Houston, we've had a problem here";
   }
 
@@ -32,8 +32,8 @@ export async function getJoke(): Promise<string> {
 }
 
 export const addVote = (score: number): Joke[] => {
-  reportAcudits[reportAcudits.length - 1] = { ...reportAcudits[reportAcudits.length - 1], score }
-  return reportAcudits
+  reportAcudits[reportAcudits.length - 1] = { ...reportAcudits[reportAcudits.length - 1], score };
+  return reportAcudits;
 }
 
 export async function getMeteo(params: WeatherParams): Promise<any> {
