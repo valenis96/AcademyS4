@@ -32,6 +32,11 @@ This project contains a web page where you can generate jokes and vote them. You
 | └── script.ts
 ├── tests
 |    └── script.spec.js
+├── jest.config.js
+├── package-lock.json
+├── package.json
+├── tsconfig.js
+├── vite.config.js
 ├── index.html # Main landing page
 └── README.md # Project documentation
 ```
