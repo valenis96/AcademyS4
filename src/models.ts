@@ -4,6 +4,8 @@ export interface JokeResponse {
   joke?: string;
   status?: number;
   value?: string;
+  icon_url?: string;
+  url?: string;
 }
 
 export interface Joke {
